@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+main{
+    min-height: 80vh;
+}
+
+.raiting{
+    margin: 0.1rem;
+}
+
+/* .produkt:hover{
+    scale: 1.05;
+} */
+.produkt{
+    min-height: 60vh;    
+    max-height: 60vh;    
+}
