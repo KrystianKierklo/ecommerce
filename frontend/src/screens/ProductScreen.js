@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { Link, useParams, useHistory, useLocation } from 'react-router-dom'
+import { Link, useParams, useHistory, useLocation, useNavigate } from 'react-router-dom'
 import { Row, Col, Image, ListGroup, Button, Card, Form } from 'react-bootstrap'
 import Rating from '../components/Rating'
 import Loader from '../components/Loader'
@@ -11,7 +11,7 @@ import {listProductDetails} from '../actions/productActions'
 
 function ProductScreen() {
     const {id} = useParams()
-    const history = []
+    const navigate = useNavigate();
 
 
     const [qty, setQty] = useState(1)
@@ -26,8 +26,8 @@ function ProductScreen() {
 	}, [dispatch])
 
     const addToCartHandler = () => {
-        window.location.replace(`/cart/${id}?qty=${qty}`);
-        history.push(`/cart/${id}?qty=${qty}`)
+        navigate(`/cart/${id}?qty=${qty}`)
+
     }
 
     return (

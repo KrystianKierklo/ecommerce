@@ -6,6 +6,10 @@ import HomePage from './screens/HomePage';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ProductScreen from './screens/ProductScreen';
 import CartScreen from './screens/CartScreen'
+import LoginScreen from './screens/LoginScreen'
+import RegisterScreen from './screens/RegisterScreen';
+import ProfileScreen from './screens/ProfileScreen';
+import ShippingScreen from './screens/ShippingScreen';
  
 
 function App() {
@@ -17,7 +21,11 @@ function App() {
             <Routes>
               <Route path='/' element={<HomePage />} exact/>
               <Route path='/product/:id' element={<ProductScreen />}/>
-              <Route path='/cart/:id' element={<CartScreen />}/>
+              <Route path='/cart/:id?' element={<CartScreen />}/>
+              <Route path='/login' element={<LoginScreen />}/>
+              <Route path='/register' element={<RegisterScreen />}/>
+              <Route path='/profile' element={<ProfileScreen />}/>
+              <Route path='/shipping' element={<ShippingScreen />}/>
             </Routes>
           </Container>
         </main>

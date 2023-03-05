@@ -22,5 +22,20 @@ main{
 } */
 .produkt{
     min-height: 60vh;    
-    max-height: 60vh;    
+    max-height: 60vh;  
+    transition: transform .3s ease-in-out;  
 }
+
+.produkt:hover{
+    transform: translateY(-5%);
+}
+
+.login-btn{
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.loginform{
+    border: 3px solid gold;
+}
+
