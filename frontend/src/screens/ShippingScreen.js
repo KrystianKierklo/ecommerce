@@ -35,13 +35,13 @@ function ShippingScreen() {
 
 
   return (
-      <FormContainer >
+    <FormContainer >
         <CheckoutSteps step1 step2/>
         <h1 className="text-3xl text-center">Dostawa i płatność</h1>
         <Form onSubmit={submitHandler}>
 
             <Form.Group controlId='address' className="mt-3">
-                <Form.Label>Adres</Form.Label>
+                <Form.Label>Ulica</Form.Label>
                     <Form.Control required type='text' placeholder='Wprowadź ulicę i numer domu' value={address ? address : ''} onChange={(e)=>setAddress(e.target.value)}>
             
                     </Form.Control>
@@ -72,7 +72,7 @@ function ShippingScreen() {
 
 
         </Form>
-    </FormContainer>
+    </FormContainer>      
   )
 }
 

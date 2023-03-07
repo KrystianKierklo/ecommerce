@@ -20,6 +20,7 @@ function Header() {
 
 	const logoutHandler = () =>{
 		dispatch(logout())
+		localStorage.clear()
 	}
 
 	return (

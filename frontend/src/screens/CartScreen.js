@@ -41,7 +41,7 @@ function CartScreen() {
         if (userInfo) {
             navigate('/shipping')
           } else {
-            navigate('/login?redirect=shipping')
+            navigate('/login')
           }
     }
 
