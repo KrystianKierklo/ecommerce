@@ -39,3 +39,7 @@ main{
     border: 3px solid gold;
 }
 
+#adminmenu{
+    color: rgb(172, 0, 0);
+    font-weight: bold;
+}

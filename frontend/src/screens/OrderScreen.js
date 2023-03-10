@@ -30,7 +30,7 @@ function OrderScreen() {
         if(!order || order._id !== Number(orderId)){
             dispatch(getOrderDetails(orderId))
         }
-    }, [order, orderId])
+    }, [dispatch, order, orderId])
 
 
   return loading ? (
@@ -45,7 +45,7 @@ function OrderScreen() {
         <Col md={8}>
             <ListGroup cariant='flush'>
                 <ListGroup.Item >
-                    <h2 className="text-xl font-bold">Dostawa</h2>
+                    <h2 className="text-3xl font-bold">Dostawa</h2>
                     <p className="pt-4 text-xl">
                         <strong>Imię: </strong> {order.user.name}
                     </p>
@@ -59,13 +59,20 @@ function OrderScreen() {
                         {'   '}
                         {order.shippingAddress.country}
                     </p>
+
+                    {order.isDelivered ? (
+                        <Message variant='success' >Zamówienie zostało dostarczone</Message>
+                    ): <Message variant='warning'>Zamówienie nie zostało jeszcze dostarczone</Message>}
                 </ListGroup.Item>
 
                 <ListGroup.Item className="mt-4">
-                    <h2 className="text-3xl font-bold">Wybrana metoda płatności </h2>
-                    <p className="pt-4 text-xl">
-                        {order.paymentMethod}
+                    <h2 className="text-3xl font-bold">Płatność </h2>
+                    <p className="pt-4 text-xl mb-3">
+                        <strong>Wybrana metoda płatności: </strong> {order.paymentMethod}
                     </p>
+                    {order.isPaid ? (
+                        <Message variant='success' >Zamówienie zostało opłacone {order.paidAt}</Message>
+                    ): <Message variant='warning'>Zamówienie nie zostało opłacone</Message>}
                 </ListGroup.Item>
 
                 <ListGroup.Item className="mt-4">
@@ -82,7 +89,7 @@ function OrderScreen() {
                                             <Link to={`/product/${item.product}`}>{item.name}</Link>
                                         </Col>
                                         <Col md={4}>
-                                            {item.qty}  X  ${item.price} zł = {item.qty * item.price} zł
+                                            {item.qty}  X  {item.price} zł = {item.qty * item.price} zł
                                         </Col>
                                     </Row>
                                 </ListGroup.Item>

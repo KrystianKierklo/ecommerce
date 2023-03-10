@@ -40,6 +40,21 @@ function Header() {
                                 </Nav.Link>
                             </LinkContainer>
 
+							{userInfo && userInfo.isAdmin && (
+								<NavDropdown title={`Panel Admina`} id='adminmenu' className="pr-5">
+									<LinkContainer to='/admin/userlist'>
+										<NavDropdown.Item>Użytkownicy</NavDropdown.Item>
+									</LinkContainer>
+									<LinkContainer to='/admin/productlist'>
+										<NavDropdown.Item>Przedmioty</NavDropdown.Item>
+									</LinkContainer>
+									<LinkContainer to='/admin/orderlist'>
+										<NavDropdown.Item>Zamówienia</NavDropdown.Item>
+									</LinkContainer>
+								
+							</NavDropdown>
+							)}
+
 
 							{userInfo ? (
 								<NavDropdown title={`Witaj ${userInfo.name} !`} id='username' className="pr-5">
@@ -54,6 +69,8 @@ function Header() {
 									</LinkContainer>
 								)							
 							}
+
+							
 
 						</Nav>
 					</Navbar.Collapse>
