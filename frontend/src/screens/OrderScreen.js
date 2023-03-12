@@ -8,7 +8,9 @@ import {register} from '../actions/userActions'
 import FormContainer from '../components/FormContainer';
 import CheckoutSteps from '../components/CheckoutSteps'
 import {getOrderDetails} from '../actions/orderActions'
-import { ORDER_CREATE_RESET } from '../constants/orderConstants';
+import { ORDER_CREATE_RESET, ORDER_DELIVERED_RESET } from '../constants/orderConstants'
+import { deliverOrder } from '../actions/orderActions';
+
 
 function OrderScreen() {
     const { id: orderId } = useParams()
@@ -16,6 +18,12 @@ function OrderScreen() {
 
     const orderDetails = useSelector(state => state.orderDetails)
     const{order, error, loading} = orderDetails
+
+    const orderDelivered = useSelector(state => state.orderDelivered)
+    const{loading:loadingDelivered, success:successDelivered, } = orderDelivered
+
+    const userLogin = useSelector(state => state.userLogin)
+    const {userInfo } = userLogin
 
 
     const location = useLocation()
@@ -27,10 +35,24 @@ function OrderScreen() {
 
     
     useEffect(() => {
-        if(!order || order._id !== Number(orderId)){
-            dispatch(getOrderDetails(orderId))
+
+        if(!userInfo){
+            navigate('/login')
         }
-    }, [dispatch, order, orderId])
+
+        if(!order || order._id !== Number(orderId || successDelivered)){
+            dispatch({type: ORDER_DELIVERED_RESET})
+            dispatch(getOrderDetails(orderId))
+            
+        }
+    }, [dispatch, order, orderId, successDelivered, navigate])
+
+
+    const deliveredHandler = () =>{
+        dispatch(deliverOrder(order))
+        window.location.reload()
+    }
+
 
 
   return loading ? (
@@ -64,6 +86,7 @@ function OrderScreen() {
                         <Message variant='success' >Zamówienie zostało dostarczone</Message>
                     ): <Message variant='warning'>Zamówienie nie zostało jeszcze dostarczone</Message>}
                 </ListGroup.Item>
+
 
                 <ListGroup.Item className="mt-4">
                     <h2 className="text-3xl font-bold">Płatność </h2>
@@ -137,6 +160,17 @@ function OrderScreen() {
                     </ListGroup.Item>
 
                 </ListGroup>
+                
+                {loadingDelivered && <Loader />}
+
+                {userInfo && userInfo.isAdmin && ! order.isDelivered ?(
+                    <ListGroup.Item className="p-4">
+                        <Button type='button' className="btn login-btn" onClick={deliveredHandler}>
+                            Potwierdź dostawę
+                        </Button>
+                    </ListGroup.Item>
+                ): null}
+
             </Card>
         </Col>
       </Row>

@@ -20,7 +20,7 @@ function Product({ product }) {
 
                 <Card.Text as="div">
                     <div className="my-3">
-                        <Rating value={product.rating} text={product.numReviews} />
+                        <Rating value={product.rating} />
                     </div>
                 </Card.Text>
 

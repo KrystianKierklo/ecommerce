@@ -6,7 +6,8 @@ import Message from '../components/Message';
 import {useDispatch, useSelector} from 'react-redux'
 import FormContainer from '../components/FormContainer';
 import {LinkContainer} from 'react-router-bootstrap'
-import {listOrders} from '../actions/orderActions' 
+import {listOrders, deliverOrder} from '../actions/orderActions' 
+
 
 
 function OrderListScreen() {
@@ -43,7 +44,7 @@ function OrderListScreen() {
                 <Table striped bordered hover responsive className="table-sm">
                     <thead className="text-center ">
                         <tr>
-                            <th>Id</th>
+                            <th>Numer</th>
                             <th>Kupujący</th>
                             <th>Data</th>
                             <th>Kwota</th>

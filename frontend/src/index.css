@@ -8,6 +8,11 @@
     box-sizing: border-box;
 }
 
+*::selection {
+    background-color: gold;
+    color: black;
+  }
+
 
 main{
     min-height: 80vh;

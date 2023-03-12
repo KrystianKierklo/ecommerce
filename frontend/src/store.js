@@ -1,12 +1,12 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import { productListReducers, productDetailsReducers, productDeleteReducers, productCreateReducers, productUpdateReducers } from './reducers/productReducer'
+import { productListReducers, productDetailsReducers, productDeleteReducers, productCreateReducers, productUpdateReducers, productReviewCreateReducers } from './reducers/productReducer'
 import {cartReducer} from './reducers/cartReducers'
 import {userLoginReducer, userRegisterReducer} from './reducers/userReducers'
 import { userDetailsReducer } from './reducers/userReducers'
 import { userUpdateProfileRecuder, userListReducer, userDeleteReducer, userUpdateReducer } from './reducers/userReducers'
-import {orderCreateReducer, orderDetailsReducer, orderPayReducer, orderListMyReducers, orderListReducers} from './reducers/orderReducers'
+import {orderCreateReducer, orderDetailsReducer, orderPayReducer, orderListMyReducers, orderListReducers, orderDeliverReducer} from './reducers/orderReducers'
 
 
 const reducer = combineReducers({
@@ -15,6 +15,7 @@ const reducer = combineReducers({
     productDelete: productDeleteReducers,
     productCreate: productCreateReducers,
     productUpdate: productUpdateReducers,
+    ProductReviewCreate: productReviewCreateReducers,
     cart: cartReducer, 
     userLogin: userLoginReducer,
     userRegister: userRegisterReducer,
@@ -25,6 +26,7 @@ const reducer = combineReducers({
     orderPay: orderPayReducer,
     orderListMy: orderListMyReducers,
     orderList: orderListReducers,
+    orderDelivered: orderDeliverReducer,
     userList: userListReducer,
     userDelete: userDeleteReducer,
     userUpdate: userUpdateReducer,

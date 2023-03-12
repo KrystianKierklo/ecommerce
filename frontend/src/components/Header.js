@@ -9,6 +9,8 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { LinkContainer } from 'react-router-bootstrap'
 import {useDispatch, useSelector} from 'react-redux'
 import {logout} from '../actions/userActions'
+import SearchBox from '../components/SearchBox'
+
 
 function Header() {
 	const cart = useSelector(state => state.cart)
@@ -32,6 +34,7 @@ function Header() {
                     </LinkContainer>
 					<Navbar.Toggle aria-controls='navbarScroll' />
 					<Navbar.Collapse id='navbarScroll'>
+						<SearchBox />
 						<Nav
 							className='my-2 my-lg-0 ms-auto p-1'
 							navbarScroll>

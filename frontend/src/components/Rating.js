@@ -55,7 +55,7 @@ function Rating(props) {
             </i>
         </span> 
 
-        <span className="text-white"> {text} opinii</span>
+        <span className="text-white"> {text}</span>
     </div>
   )
 }

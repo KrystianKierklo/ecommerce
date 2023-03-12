@@ -41,7 +41,7 @@ function ProfileScreen() {
         }else{
             if(!user || !user.name || success || userInfo._id !== user._id){
                 dispatch({type: USER_UPDATE_PROFILE_RESET})
-                dispatch(getUserDetails('profile'))
+                dispatch(getUserDetails(Number(userInfo._id)))
                 dispatch(listMyOrders())
             }else{
                 setName(user.name)
@@ -133,9 +133,14 @@ function ProfileScreen() {
                                 <td>{order._id}</td>
                                 <td>{order.createAt.substring(0, 10)} - {order.createAt.substring(11, 16)}</td>
                                 <td>{order.totalPrice} zł</td>
-                                <td>{order.isPaid ? <>{order.paidAt.substring(0, 10)} - {order.paidAt.substring(11, 16)} -   
-                                    {order.paymentMethod}</> : 
-                                    (<i class="fa-solid fa-x text-red-500"></i>)}
+                                <td>{!order.isPaid ? (
+                                    <p className="text-red-500">Nie opłacone</p>
+                                ): (
+                                    order.paidAt ? (
+                                      <p className="text-green-500">Opłacone {order.paidAt.substring(0, 10)}- {order.paidAt.substring(11, 16)}</p>
+                                    ) : (
+                                      <p className="text-green-500">Opłacone</p>
+                                    ))}
                                 </td>
                                 <td>
                                     <LinkContainer to={`/order/${order._id}`}>
